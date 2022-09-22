@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
@@ -45,11 +46,13 @@ class MainActivity : AppCompatActivity() {
             timeAt = LocalDate.now().plusDays(1).atTime(8,0)
         }
 
-        GlobalScope.launch {
+
+        lifecycleScope.launchWhenCreated {
             viewModel.notifications.collectLatest {
                 adapter?.submitData(it)
             }
         }
+
 
         binding.rv.adapter = adapter
 
@@ -58,5 +61,6 @@ class MainActivity : AppCompatActivity() {
            .build()
         // Avoiding duplicating PeriodicWorkRequest from WorkManager , i used enqueueUniquePeriodicWork instead of just enqueue
         workManager.enqueueUniquePeriodicWork("Send Notification",  ExistingPeriodicWorkPolicy.KEEP,workRequest)
+
     }
 }
