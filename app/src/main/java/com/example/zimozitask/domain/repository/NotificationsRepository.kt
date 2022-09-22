@@ -1,8 +1,7 @@
-package com.example.zimozitask.data.repository
+package com.example.zimozitask.domain.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
-import androidx.paging.cachedIn
 import com.example.zimozitask.data.databaase.DatabaseTable
 import com.example.zimozitask.data.databaase.NotificationsDatabase
 import kotlinx.coroutines.Dispatchers

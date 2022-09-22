@@ -18,11 +18,9 @@ class RvPagedListAdapter :
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.rv_list, parent, false)
         )
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position)!!)
     }
-
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val time = itemView.findViewById<TextView>(R.id.time)
@@ -44,7 +42,6 @@ companion object{
         override fun areContentsTheSame(oldItem: DatabaseTable, newItem: DatabaseTable): Boolean {
             return oldItem == newItem
         }
-
     }
 }
 

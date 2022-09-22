@@ -6,15 +6,11 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
-import androidx.work.PeriodicWorkRequestBuilder
-import androidx.work.WorkManager
-import com.example.zimozitask.utils.NotificationWorker
 import com.example.zimozitask.data.databaase.NotificationsDatabase
-import com.example.zimozitask.data.repository.NotificationsRepository
+import com.example.zimozitask.domain.repository.NotificationsRepository
 import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.concurrent.TimeUnit
 
 @RequiresApi(Build.VERSION_CODES.O)
 class MainActivityViewModel (app: Application) : AndroidViewModel(app) {
