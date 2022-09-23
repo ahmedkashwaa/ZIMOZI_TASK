@@ -7,6 +7,8 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.example.zimozitask.R
+import java.text.SimpleDateFormat
+import java.util.*
 
 class NotificationHelper(val context: Context) {
     private val CHANNEL_ID = "notification_channel_id"
@@ -28,7 +30,11 @@ class NotificationHelper(val context: Context) {
             .setContentText(message)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .build()
-        NotificationManagerCompat.from(context).notify(NOTIFICATION_ID, notification)
+        NotificationManagerCompat.from(context).notify(createID(), notification)
+    }
+    fun createID(): Int {
+        val now = Date()
+        return SimpleDateFormat("ddHHmmss", Locale.US).format(now).toInt()
     }
 
 }
