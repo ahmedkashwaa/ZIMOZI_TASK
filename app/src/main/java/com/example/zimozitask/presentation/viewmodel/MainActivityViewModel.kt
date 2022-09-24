@@ -29,6 +29,7 @@ class MainActivityViewModel(app: Application) : AndroidViewModel(app) {
             val formatted = current.format(formatter)
             repository.insertNotification(current.format(formatterTime), formatted, battery)
 
+
             notificationHelper.createNotification(
                 "Notification Fired",
                 "Time - ${current.format(formatterTime)} \n Date - ${formatted} \n Battery % - ${battery.toInt()}")
