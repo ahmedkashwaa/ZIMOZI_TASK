@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
            .setInitialDelay(Duration.between(timeNow,timeAt))
            .build()
         // Avoiding duplicating PeriodicWorkRequest from WorkManager , i used enqueueUniquePeriodicWork instead of just enqueue
-        workManager.enqueueUniquePeriodicWork("Send Notification",  ExistingPeriodicWorkPolicy.KEEP,workRequest)
+        workManager.enqueueUniquePeriodicWork("Send Notification",  ExistingPeriodicWorkPolicy.REPLACE,workRequest)
 
     }
 }

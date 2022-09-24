@@ -27,14 +27,10 @@ class NotificationWorker(val context: Context,val params: WorkerParameters) :Wor
         val c = Calendar.getInstance()
         val timeOfDay = c.get(Calendar.HOUR_OF_DAY)
         if (timeOfDay in 8..12){
-            NotificationHelper(context).createNotification(
-                "Notification Fired",
-                "Notification Alarm Fired")
             val viewModel =  MainActivityViewModel(applicationContext as Application)
-            // insert notification in Room
+            // insert notification in Room and create notification
             viewModel.insert(batteryPct!!)
             return Result.success()
-
         } else{
             return Result.success()
         }
